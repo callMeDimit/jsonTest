@@ -1,5 +1,6 @@
 package com.dimit.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -12,7 +13,7 @@ public class Zoo {
 
 	public String name;
 	public String city;
-	public List<Animal> animals;
+	public List<Animal> animals = new ArrayList<Animal>();;
 
 	@JsonCreator
 	public Zoo(@JsonProperty("name") String name, @JsonProperty("city") String city) {
@@ -27,6 +28,16 @@ public class Zoo {
 	@Override
 	public String toString() {
 		return "Zoo [name=" + name + ", city=" + city + ", animals=" + animals + "]";
+	}
+
+	/**
+	 * 增加animal
+	 * 
+	 * @param animal
+	 */
+	public Zoo add(Animal animal) {
+		animals.add(animal);
+		return this;
 	}
 
 }
